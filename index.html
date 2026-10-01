@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+<meta name="theme-color" content="#3D5CFF" />
+<title>AttendX</title>
+<link rel="manifest" href="manifest.json" />
+<link rel="icon" href="icon-192.svg" type="image/svg+xml" />
+<link rel="apple-touch-icon" href="icon-192.svg" />
+<link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+<div class="phone">
+
+  <!-- LOGIN -->
+  <section class="screen active" id="screen-login">
+    <div class="login-wrap">
+      <h1 class="brand">AttendX</h1>
+      <p class="subtitle">Welcome back<br />Sign in to continue</p>
+
+      <form id="login-form" class="login-form">
+        <label class="field">
+          <span class="field-icon">✉</span>
+          <input type="text" id="login-id" placeholder="Email / Roll no" required />
+        </label>
+        <label class="field">
+          <span class="field-icon">🔒</span>
+          <input type="password" id="login-pass" placeholder="Password" required />
+        </label>
+        <button type="submit" class="btn-primary">Login</button>
+      </form>
+      <button class="link-btn" id="forgot-btn">Forgot Password?</button>
+    </div>
+  </section>
+
+  <!-- HOME -->
+  <section class="screen" id="screen-home">
+    <header class="home-header">
+      <div>
+        <h2 class="hi-name" id="home-name">Elakkian</h2>
+        <p class="hi-date" id="home-date">Wednesday, 15 July 2026</p>
+      </div>
+      <button class="avatar-btn" data-target="screen-profile" aria-label="Profile">👤</button>
+    </header>
+
+    <div class="search">
+      <span>🔍</span>
+      <input type="text" placeholder="Search..." />
+    </div>
+
+    <button class="card card-hero" data-target="screen-attendance">
+      <div>
+        <p class="hero-label">Overall Attendance</p>
+        <p class="hero-value">89% <span class="pill pill-good">Good</span></p>
+      </div>
+    </button>
+
+    <div class="grid-2">
+      <button class="card card-tile" data-target="screen-attendance">
+        <span class="tile-icon tile-blue">📊</span>
+        <span class="tile-title">Attendance</span>
+        <span class="tile-sub">87%</span>
+      </button>
+      <button class="card card-tile" data-target="screen-timetable">
+        <span class="tile-icon tile-purple">🗓</span>
+        <span class="tile-title">Timetable</span>
+        <span class="tile-sub">8 Classes today</span>
+      </button>
+      <button class="card card-tile" data-target="screen-notifications">
+        <span class="tile-icon tile-green">🔔</span>
+        <span class="tile-title">Notification</span>
+        <span class="tile-sub">Events</span>
+      </button>
+      <button class="card card-tile" data-target="screen-settings">
+        <span class="tile-icon tile-orange">⚙</span>
+        <span class="tile-title">Settings</span>
+        <span class="tile-sub">Personalize app</span>
+      </button>
+    </div>
+
+    <button class="card card-next" data-target="screen-timetable">
+      <span class="tile-icon tile-blue">📘</span>
+      <span>
+        <span class="tile-title">Next Class</span><br />
+        <span class="tile-sub">Data Structure · in 21 min</span>
+      </span>
+    </button>
+
+    <nav class="bottom-nav">
+      <button class="nav-btn active" data-target="screen-home">🏠<span>Home</span></button>
+      <button class="nav-btn" data-target="screen-attendance">📊<span>Attend</span></button>
+      <button class="nav-btn" data-target="screen-timetable">🗓<span>Time</span></button>
+      <button class="nav-btn" data-target="screen-notifications">🔔<span>Alerts</span></button>
+      <button class="nav-btn" data-target="screen-settings">⚙<span>Settings</span></button>
+    </nav>
+  </section>
+
+  <!-- ATTENDANCE -->
+  <section class="screen" id="screen-attendance">
+    <header class="sub-header">
+      <button class="back-btn" data-target="screen-home">←</button>
+      <h2>Attendance</h2>
+      <span></span>
+    </header>
+
+    <div class="gauge-card card">
+      <div class="gauge" style="--pct:87">
+        <span class="gauge-value">87%</span>
+      </div>
+      <p class="pill pill-good">Good</p>
+    </div>
+
+    <h3 class="section-title">Subject attendance</h3>
+    <div class="card subject-list" id="subject-list"></div>
+
+    <h3 class="section-title">Insights</h3>
+    <div class="card insights">
+      <div class="insight-row"><span>Total period</span><strong>61</strong></div>
+      <div class="insight-row"><span>Period attended</span><strong>59</strong></div>
+      <div class="insight-row"><span>Period missed</span><strong>2</strong></div>
+    </div>
+  </section>
+
+  <!-- TIMETABLE -->
+  <section class="screen" id="screen-timetable">
+    <header class="sub-header">
+      <button class="back-btn" data-target="screen-home">←</button>
+      <h2>Timetable</h2>
+      <span></span>
+    </header>
+
+    <div class="day-tabs" id="day-tabs"></div>
+
+    <div class="card break-banner">Tea Break: 10:45 AM – 11:05 AM</div>
+    <div class="timetable-list" id="timetable-list"></div>
+    <div class="card break-banner">Lunch Break: 12:55 PM – 1:45 PM</div>
+  </section>
+
+  <!-- NOTIFICATIONS -->
+  <section class="screen" id="screen-notifications">
+    <header class="sub-header">
+      <button class="back-btn" data-target="screen-home">←</button>
+      <h2>Notification</h2>
+      <span></span>
+    </header>
+
+    <div class="tabs" id="notif-tabs">
+      <button class="tab active" data-filter="all">All</button>
+      <button class="tab" data-filter="unread">Unread</button>
+      <button class="tab" data-filter="read">Read</button>
+    </div>
+
+    <div id="notif-groups"></div>
+  </section>
+
+  <!-- SETTINGS -->
+  <section class="screen" id="screen-settings">
+    <header class="sub-header">
+      <button class="back-btn" data-target="screen-home">←</button>
+      <h2>Settings</h2>
+      <span></span>
+    </header>
+
+    <div class="card mode-card">
+      <button class="mode-btn active" id="light-mode-btn">☀️<br />Light Mode</button>
+      <button class="mode-btn" id="dark-mode-btn">🌙<br />Dark Mode</button>
+    </div>
+
+    <button class="card list-row" id="about-btn">About app</button>
+    <button class="card list-row danger" id="logout-btn">🚪 Logout</button>
+  </section>
+
+  <!-- PROFILE -->
+  <section class="screen" id="screen-profile">
+    <header class="sub-header">
+      <button class="back-btn" data-target="screen-home">←</button>
+      <h2>Profile</h2>
+      <span></span>
+    </header>
+
+    <div class="profile-avatar">👤</div>
+    <div class="card profile-list">
+      <div class="profile-row"><span>User ID</span><strong id="p-userid">17559</strong></div>
+      <div class="profile-row"><span>Email</span><strong id="p-email">24cs061@kpriet.ac.in</strong></div>
+      <div class="profile-row"><span>Full Name</span><strong id="p-name">Elakkian S</strong></div>
+      <div class="profile-row"><span>Roll no</span><strong id="p-roll">24cs061</strong></div>
+      <div class="profile-row"><span>Class</span><strong id="p-class">III - CSE A</strong></div>
+    </div>
+  </section>
+
+</div>
+
+<script src="app.js"></script>
+</body>
+</html>
